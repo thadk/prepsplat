@@ -1,0 +1,25 @@
+; SPLAT! Auto-generated Signal Color Definition ("RADIO5ARUSHA.scf") File
+;
+; Format for the parameters held in this file is as follows:
+;
+;    dBuV/m: red, green, blue
+;
+; ...where "dBuV/m" is the signal strength (in dBuV/m) and
+; "red", "green", and "blue" are the corresponding RGB color
+; definitions ranging from 0 to 255 for the region specified.
+;
+; The following parameters may be edited and/or expanded
+; for future runs of SPLAT!  A total of 32 contour regions
+; may be defined in this file.
+;
+;
+; http://colorbrewer2.org/?type=sequential&scheme=OrRd&n=5
+; http://www.fcc.gov/encyclopedia/fm-broadcast-station-classes-and-service-contours
+;
+ 98: 127,0,0
+ 88: 179,0,0
+ 70: 227,74,51
+ 60: 252,141,89
+ 57: 253,204,138
+ 54: 254,240,217
+
