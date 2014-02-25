@@ -4,6 +4,12 @@
 var csv = require('csv');
 var fs = require('fs');
 
+var pad = function(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
+
 
 csv()
 .from.stream(fs.createReadStream(process.argv[2]))
@@ -13,7 +19,7 @@ csv()
 })
 .on('record', function(row,index){
 
-  var name = [row[6],"-",index].join("");
+  var name = [row[6],"-",pad(index,2)].join("");
   if (index > 0 ) {
 
     //make sure meters are the units, rather than implicitly, feet

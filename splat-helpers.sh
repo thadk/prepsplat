@@ -10,7 +10,10 @@ txsplt () {
       sed -e "s/<href>$1.ppm<\/href>/<href>.\/$1.png<\/href>/g" -e "s/<href>$1-ck.ppm<\/href>/<href>.\/$1-ck.png<\/href>/g"  $1.kml > $1-png.kml
       convert $1.png $1.jpg
       sed -e "s/<href>$1.ppm<\/href>/<href>.\/$1.jpg<\/href>/g" -e "s/<href>$1-ck.ppm<\/href>/<href>.\/$1-ck.png<\/href>/g"  $1.kml > $1-jpg.kml
+
       java -jar ~/gitrepos/prepsplat/WorldFileTool.jar
+      echo "copying all *.jgw world files to *.pgw"
+      find . -depth -name "*.jgw" -exec sh -c 'cp "$1" "${1%.jgw}.pgw"' _ {} \;
   }
 
 mkcd () {
@@ -62,7 +65,8 @@ splt-gis () {
     sessname=$1+`date +%Y%b%d:%Hhr`
     echo $sessname
     cp ~/gitrepos/prepsplat/gis-54-contour.scf  ./$1.scf
-    splat -t $1 -sc -R 150 -L 5.0 -kml -ngs -o $sessname
+    splat -t $1 -R 150 -L 5.0 -kml -ngs -o $sessname
+        #-sc makes the map continuous
     convert -transparent "#FFFFFF" $sessname.ppm $sessname.png
     convert -transparent "#FFFFFF" $sessname-ck.ppm $sessname-ck.png
     echo txsplt $sessname
